@@ -82,6 +82,9 @@
 
 
   /* OTHER */
+
+  --transition-anim-fast: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   /* --indent: 24px;
   --items: 4;
   --transition-dur-func: 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -90,7 +93,7 @@
 }
 
 
-/* global border box */
+/* Base styles */
 
 
 *,
@@ -110,7 +113,7 @@ body {
 
 }
 
-/* reset standart style */
+/* Reset start */
 
 h1,
 h2,
@@ -149,14 +152,6 @@ button {
 }
 
 
-
-/**
-  |============================
-  | Common Rules/ Utility
-  |============================
-*/
-
-
 .visually-hidden {
   position: absolute;
   overflow: hidden;
@@ -172,6 +167,14 @@ button {
 }
 
 
+/**
+  |============================
+  | Reset End | Utility
+  |============================
+*/
+
+
+
 .section {
   padding-top: 120px;
   padding-bottom: 120px;
@@ -183,7 +186,8 @@ button {
   margin-left: auto;
   padding-right: 15px;
   padding-left: 15px;
-
+  /* outline: 2px solid red;
+    outline-offset: -2px; */
 }
 
 .title {
@@ -222,6 +226,9 @@ button {
 }
 
 
+/* Normal state */
+
+
 .btn {
   display: block;
   padding: 12px 24px;
@@ -235,7 +242,10 @@ button {
   line-height: 1.5;
   letter-spacing: 0.04em;
   cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 .btn.current,
 .btn:hover,
@@ -244,6 +254,7 @@ button {
   background-color: var(--accent-txt-bg-cl);
   color: var(--light-primary-text-cl);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: var(--transition-anim-fast);
 }
 
 .btn .btn-portfolio .current,
@@ -253,6 +264,7 @@ button {
   background-color: var(--blue-txt-cl);
   color: var(--light-primary-text-cl);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
 }
 
 
@@ -335,6 +347,7 @@ button {
 
   font-weight: 500;
   line-height: 1.5;
+  transition: color var(--transition-anim-fast);
 
 }
 
@@ -348,6 +361,7 @@ button {
 
 
 .header-nav-link.current {
+  position: relative;
   color: var(--accent-txt-bg-cl);
 }
 
@@ -378,6 +392,7 @@ button {
   color: var(--secondary-txt-cl);
 
   line-height: 1.5;
+  transition: color var(--transition-anim-fast);
 
 }
 
@@ -386,6 +401,7 @@ button {
 .header-contacts-link:hover,
 .header-contacts-link:focus {
   color: var(--accent-txt-bg-cl);
+
 }
 
 
@@ -443,10 +459,24 @@ button {
   margin-top: 48px;
   padding: 16px 32px;
   border-color: var(--blue-txt-cl);
+  border-radius: 4px;
   background-color: var(--blue-txt-cl);
   color: var(--light-primary-text-cl);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  transition: color var(--transition-anim-fast), background-color var(--transition-anim-fast), box-shadow var(--transition-anim-fast);
 
 }
+
+.btn-hero:hover,
+.btn-hero:focus {
+  border-radius: 4px;
+
+  /* background-color: var(--accent-txt-bg-cl); */
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
+}
+
 
 .btn.btn-hero.centered {
 
@@ -584,12 +614,14 @@ button {
   height: 40px;
   border-radius: 50%;
   background-color: var(--blue-button-bg-cl);
-  /* transition: background-color var(--contact-txt-cl); */
+  transition: background-color var(--transition-anim-fast);
+
 }
 
 .socials-link:hover,
 .socials-link:focus {
   background-color: var(--accent-txt-bg-cl);
+
 }
 
 .socials-icon {
@@ -631,12 +663,13 @@ button {
   border-radius: 4px;
   color: var(--text-subtle-color);
 
-  /* transition: color var(--transition-dur-func); */
+  transition: color var(--transition-anim-fast);
 }
 
 .customers-list-link:hover,
 .customers-list-link:focus {
   color: var(--accent-txt-bg-cl);
+
 }
 
 .customers-list-icon {
@@ -651,6 +684,46 @@ button {
   |============================
 */
 
+/* Portfolio Overlay */
+
+.card-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+.card-overlay-text {
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  overflow: auto;
+  width: 360px;
+  height: 300px;
+  padding: 40px 32px;
+  background-color: var(--blue-txt-cl);
+  color: var(--footer-logo-light-txt-cl);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
+  background-blend-mode: soft-light;
+  mix-blend-mode: normal;
+}
+
+
+
+.portfolio-list-link:hover .card-overlay-text {
+
+  transform: translateY(0);
+}
+
+
+/* Rest of Portfolio */
+
 
 .portfolio-filter {
   padding-top: 96px;
@@ -662,12 +735,14 @@ button {
 .btn-portfolio {
   background-color: var(--portfolio-filter-button-bg-cl);
   color: var(--blue-txt-cl);
+  transition: color var(--transition-anim-fast);
 
 }
 
 .btn-portfolio:hover,
 .btn-portfolio:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+
 }
 
 
@@ -705,7 +780,10 @@ button {
 
 .portfolio-list-link {
   display: block;
+
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08);
+  transition: box-shadow var(--transition-anim-fast);
+
 }
 
 
@@ -713,6 +791,7 @@ button {
 .portfolio-list-link:focus {
 
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+
 }
 
 
@@ -795,11 +874,13 @@ button {
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color var(--transition-anim-fast);
 }
 
 .footer-social-list-link:hover,
 .footer-social-list-link:focus {
   background-color: var(--green-bg-cl);
+
 }
 
 .footer-social-list-icon {
