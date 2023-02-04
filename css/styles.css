@@ -40,6 +40,8 @@
   --footer-light-txt-cl: #E7E9FC;
   /* CORNFLOWER */
 
+  --black-txt-cl: #000000;
+  /* BLACK- */
 
 
 
@@ -913,34 +915,59 @@ button {
   width: 100%;
   height: 100%;
   background-color: var(--modal-bg-cl);
+  transition: opacity var(--transition-anim-fast), visibility var(--transition-anim-fast);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: none;
+  pointer-events: none;
+
 }
 
 .modal {
 
   position: absolute;
-  top: 88px;
-  left: 516px;
+  top: 50%;
+  left: 50%;
   width: 408px;
   height: 576px;
 
   border-radius: 4px;
   background-color: var(--modal-window-bg-cl);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  transform: translateX(50%) translateY(50%);
+  transform: translateX(-50%) translateY(-50%);
 
 
 
 }
 
 .modal-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 112px;
-  left: 876px;
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  color: var(--black-txt-cl);
+  background-color: var(--footer-light-txt-cl);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transition: color var(--transition-anim-fast), background-color var(--transition-anim-fast),
+    border-color var(--transition-anim-fast);
 
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  color: var(--light-primary-text-cl);
+  background-color: var(--accent-txt-bg-cl);
+  border-color: transparent;
+}
+
+.modal-icon {
+  fill: currentColor;
 }
