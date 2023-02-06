@@ -263,7 +263,7 @@ button {
   background-color: var(--accent-txt-bg-cl);
   color: var(--light-primary-text-cl);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  transition: var(--transition-anim-fast);
+
 }
 
 .btn .btn-portfolio .current,
@@ -478,7 +478,6 @@ button {
 
 .btn-hero:hover,
 .btn-hero:focus {
-  border-radius: 4px;
 
   /* background-color: var(--accent-txt-bg-cl); */
 
